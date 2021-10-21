@@ -3,8 +3,10 @@ package thread;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Thread8 {
+
     public static void main(String[] args) {
         final Two two = new Two();
+
         for (int i = 0; i < 2; i++) {
             new Thread(new Runnable() {
                 public void run() {
