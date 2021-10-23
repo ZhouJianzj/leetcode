@@ -1,6 +1,7 @@
 package thread;
 
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicIntegerArray;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class Thread15 {
@@ -19,7 +20,7 @@ public class Thread15 {
                 }
             }).start();
         }
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         System.out.println(Counter.getCounter().getTotal());
         System.out.println(Counter.getCounter().getSuccess());
         System.out.println(Counter.getCounter().getFailure());
@@ -72,4 +73,25 @@ class AAAAA{
         return AAAAA.aaaaa;
     }
 
+}
+class Testt{
+    public static void main(String[] args) throws InterruptedException {
+        final AtomicIntegerArray array = new AtomicIntegerArray(3);
+
+        for (int i = 0; i < 100; i++) {
+           new Thread( new Runnable() {
+                public void run() {
+                    array.incrementAndGet(0);
+                    int i1 = new Random().nextInt(5 - 1 + 1);
+                    if (i1 % 2==0){
+                        array.incrementAndGet(1);
+                    }else{
+                        array.incrementAndGet(2);
+                    }
+                }
+            }).start();
+        }
+        Thread.sleep(1000);
+        System.out.println(array);
+    }
 }

@@ -8,7 +8,7 @@ public class Thread14 {
         final TTT ttt = new TTT();
         new Thread(new Runnable() {
             public void run() {
-                for (int i = 0; i < 999999990; i++) {
+                for (int i = 0; i < 9990; i++) {
                     System.out.println(ttt.increment());
                 }
             }
@@ -44,7 +44,7 @@ class TTT{
         long incrementValue = counter + 1;
 //        比较 本地内存的值和 主内存中的值比较,一样就实现加一,不一样就还是那个值
         while(asc(value,counter)){
-            counter = incrementValue;
+            synchronized (this){counter = incrementValue;}
         }
         return value;
     }
