@@ -1,14 +1,13 @@
 package Map;
 
 import java.io.*;
-import java.util.Dictionary;
-import java.util.Enumeration;
-import java.util.Properties;
+import java.util.*;
 
 public class TestProperty {
 
     public static void main(String[] args) {
-        reader();
+//        reader();
+        removeDuplicates();
     }
 
     public static void writer( ) {
@@ -23,6 +22,9 @@ public class TestProperty {
         }
     }
 
+    /**
+     * 测试properties读
+     */
     public static void reader( ) {
         try {
             FileReader fileReader = new FileReader("D:/var/1.txt");
@@ -44,6 +46,23 @@ public class TestProperty {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * 测试linkHastSet
+     */
+    public static void removeDuplicates() {
+        String s = "hello";
+        char[] chars = s.toCharArray();
+        LinkedHashSet<String> set = new LinkedHashSet<>();
+        int length = chars.length;
+        for (int i = 0; i < length; i++) {
+            set.add(String.valueOf(chars[i]));
+        }
+
+        for (String s1 : set) {
+            System.out.println(s1);
         }
     }
 }
