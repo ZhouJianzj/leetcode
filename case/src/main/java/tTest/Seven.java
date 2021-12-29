@@ -1,40 +1,24 @@
 package tTest;
 
-import java.io.FileReader;
-import java.io.Reader;
+import java.io.*;
 
 public class Seven {
-    public static void main(String[] args) {
-        String file = "D:/report_data2.txt";
-        String find = "down";
-        try {
-            int n = countWords(file, find);
-            System.out.println(n);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    public static int countWords(String file, String find) throws Exception {
+    public static void main(String[] args) throws IOException {
+        FileReader fileReader = new FileReader(new File("D:\\b.txt"));
+        char[] chars = new char[10];
+        StringBuilder stringBuilder = new StringBuilder(1024);
+        int a;
         int count = 0;
-        try {
-            Reader in = new FileReader(file);
-            int c;
-            while ((c = in.read()) != -1) {
-                while (c == find.charAt(0)) {
-                    for (int i = 1; i < find.length(); i++) {
-                        c = in.read();
-                        if (c != find.charAt(i)) {
-                            break;
-                        }
-                        if (i == find.length() - 1) {
-                            count++;
-                        }
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        while ( (a = fileReader.read(chars)) != -1){
+            String s = new String(chars, 0, a);
+            stringBuilder.append(s);
+            System.out.println(s);
         }
-        return count;
+        int b = -1;
+        while ((b = stringBuilder.indexOf("hello",++b)) != -1){
+            ++count;
+        }
+        System.out.println(count);
     }
+
 }
