@@ -13,8 +13,6 @@ public class DubbleSort {
          //冒泡排序，执行 length -1 次
          //每比较一次减少一个数字，循环次数减少一次
          //两两比较，互相交换位置。
-
-
         for (int i = 0; i < ints.length - 1; i++) {
             for (int j = 0; j < ints.length - 1 - i ; j++){
                 if (ints[j] > ints[j+1]){

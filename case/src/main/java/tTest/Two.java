@@ -23,6 +23,5 @@ public class Two {
             characterSet.add((char) a);
         }
         fileInputStream.close();
-
     }
 }
