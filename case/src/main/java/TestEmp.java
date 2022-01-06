@@ -1,3 +1,4 @@
+import com.sun.org.apache.xpath.internal.Arg;
 import com.sun.xml.internal.bind.v2.model.core.ID;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +10,7 @@ import java.util.*;
 public class TestEmp {
     public static void main(String[] args) {
         //1
-//        //模拟100个员工
+        //模拟100个员工
 //        ArrayList<Emp> emps = new ArrayList<>(100);
 //        Random random = new Random();
 //        for (int i = 0; i < 100; i++) {
@@ -21,15 +22,15 @@ public class TestEmp {
 //        String str = "qweqweqwe123123";
 //        System.out.println(TestEmp.toUpLow(str));
 
-        //3
-//        System.out.println(findString("s"));
+//        3
+//        System.out.println(findString2("s"));
 
         //4
 //        System.out.println(countString("ssrrggg"));
 
-//        System.out.println(count("aaaassssddd"));
+        System.out.println(count("aaaassssddd"));
 
-        System.out.println(findString2("src"));
+//        System.out.println(findString2("src"));
     }
 
     /**
@@ -65,10 +66,10 @@ public class TestEmp {
         String s1 = s.toUpperCase();
         StringBuilder stringBuilder = new StringBuilder(s.length());
         for (int i = 0; i < s1.length(); i++) {
-            stringBuilder.append(s1.charAt(i));
             if (i % 4 == 0 && i > 0){
                 stringBuilder.append("*");
             }
+            stringBuilder.append(s1.charAt(i));
         }
         return stringBuilder.toString();
     }
@@ -78,23 +79,23 @@ public class TestEmp {
      * indexOf
      * @return
      */
-    public static int findString(String str){
-        String str1 = "srcsrc qw src eadsafdsdadsd src  asdas src";
-        int count = 0;
-        int i = 0;
-        while (true){
-            str1 = str1.substring(i);
-            if ((i = str1.indexOf(str)) != -1){
-
-                i = i + str.length();
-                count++;
-            }else {
-                break;
-            }
-        }
-        return count;
-
-    }
+//    public static int findString(String str){
+//        String str1 = "srcsrc qw src eadsafdsdadsd src  asdas src";
+//        int count = 0;
+//        int i = 0;
+//        while (true){
+//            str1 = str1.substring(i);
+//            if ((i = str1.indexOf(str)) != -1){
+//
+//                i = i + str.length();
+//                count++;
+//            }else {
+//                break;
+//            }
+//        }
+//        return count;
+//
+//    }
 
     /**
      * 方法二
@@ -128,13 +129,16 @@ public class TestEmp {
 
         HashMap<String, Integer> map = new HashMap<>(256);
         String[] strings = new String[string.length()];
+
         for (int i = 0; i < string.length(); i++) {
             strings[i] = String.valueOf(string.charAt(i));
         }
+
         HashSet<String> set = new HashSet<>(Arrays.asList(strings));
         for (String s:set){
             map.put(s,0);
         }
+
         for (String s:set){
             for (int i = 0; i < chars.length; i++) {
                 if (s.equals(String.valueOf(chars[i])) ){
@@ -155,7 +159,6 @@ public class TestEmp {
     public static Map<Character, Integer> count(String string){
         HashMap<Character, Integer> map = new HashMap<>(128);
         char[] chars = string.toCharArray();
-
         for (int i = 0; i < chars.length; i++) {
             if (map.containsKey(chars[i])) {
                 Integer integer = map.get(chars[i]);
