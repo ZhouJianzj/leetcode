@@ -133,7 +133,6 @@ public class TestEmp {
         for (int i = 0; i < string.length(); i++) {
             strings[i] = String.valueOf(string.charAt(i));
         }
-
         HashSet<String> set = new HashSet<>(Arrays.asList(strings));
         for (String s:set){
             map.put(s,0);
